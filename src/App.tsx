@@ -1039,8 +1039,22 @@ export default function App() {
                         />
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-3xl font-black font-mono">{stats.intelligence?.score.value}</span>
-                        <span className="text-[10px] font-bold uppercase text-zinc-500">Pontos</span>
+                        {stats.intelligence?.score.level === 'favoravel' && stats.autoPrediction.type !== 'aguardar' ? (
+                          <>
+                            <span className={cn(
+                              "text-2xl font-black uppercase tracking-tighter leading-none mb-1",
+                              stats.autoPrediction.type === 'par' ? "text-blue-500" : "text-red-500"
+                            )}>
+                              {stats.autoPrediction.type}
+                            </span>
+                            <span className="text-[9px] font-black uppercase text-zinc-500 tracking-widest">{stats.intelligence?.score.value} Pts</span>
+                          </>
+                        ) : (
+                          <>
+                            <span className="text-3xl font-black font-mono">{stats.intelligence?.score.value}</span>
+                            <span className="text-[10px] font-bold uppercase text-zinc-500">Pontos</span>
+                          </>
+                        )}
                       </div>
                     </div>
                     <Badge className={cn("px-4 py-1 text-xs uppercase font-black",
