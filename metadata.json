@@ -1,6 +1,8 @@
 {
-  "name": "NO CORRE - DOLLAR",
-  "description": "Plataforma de Análise de Operações (Deriv • Dígitos • Estratégia de Dollar)",
-  "requestFramePermissions": ["microphone"],
+  "name": "NO CORRE - DOLLAR | Inteligência Operacional",
+  "description": "Assistente inteligente de leitura de mercado (Deriv • Dígitos • Estratégia de Dollar)",
+  "requestFramePermissions": [
+    "microphone"
+  ],
   "majorCapabilities": []
 }
