@@ -208,8 +208,9 @@ export default function App() {
     socket.onmessage = (msg) => {
       const data = JSON.parse(msg.data);
       if (data.tick) {
-        const quote = data.tick.quote.toString();
-        const lastDigit = parseInt(quote.slice(-1));
+        const pipSize = data.tick.pip_size || 0;
+        const quoteStr = data.tick.quote.toFixed(pipSize);
+        const lastDigit = parseInt(quoteStr.slice(-1));
         const type = lastDigit % 2 === 0 ? 'par' : 'impar';
         
         // Verify previous automated prediction
@@ -240,7 +241,7 @@ export default function App() {
           pendingVoicePredictionRef.current = null;
         }
 
-        setLastPrice(quote);
+        setLastPrice(quoteStr);
         const newDigit: Digit = {
           value: lastDigit,
           timestamp: data.tick.epoch * 1000,
